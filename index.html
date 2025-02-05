@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntivirusPro - Seguridad Avanzada</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fuente Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Encabezado -->
+  <header class="bg-white py-3 border-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+      <!-- Logo que he personalizado para la empresa de Ciberseguridad que he creado -->
+      <div class="logo">
+        <a href="index.html">
+          <img src="LOGO_movil.png" alt="Logo de AntivirusPro" style="height: 50px;">
+        </a>
+      </div>
+<!-- Botón Menú para dispositivos móviles:  Este botón permite abrir y cerrar el menú de navegación en dispositivos móviles, donde el espacio de la pantalla es limitado.
+Solo aparecera en pantallas pequeñas gracias a la clase d-md-none. -->
+      <button class="btn btn-primary d-md-none toggle-menu" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-expanded="false" aria-controls="mobileMenu">
+        Menú
+      </button>
+<!-- Aquí muestra un menú de opciones (Inicio, Sobre Nosotros, Características y Contacto) que siempre está visible en la parte superior de la página en dispositivos más grandes.
+A diferencia con el menú móvil, este menú no es colapsable y está diseñado para ser visible en todo momento, facilitando la navegación en pantallas con más espacio disponible. -->
+      <nav class="d-none d-md-block">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-dark" href="#hero">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#about">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#features">Características</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ <!-- Menú colapsable para dispositivos móviles: El propósito es permitir que los clientes naveguen por las diferentes secciones de la página (Inicio, Sobre Nosotros, Características y Contacto) cuando están en un dispositivo móvil.
+Incluye un comportamiento adicional para que el menú se cierre automáticamente después de hacer clic en cualquiera de las opciones, mejorando la experiencia de cliente al evitar que el menú quede abierto tras seleccionar una opción del menú. -->
+  <div class="collapse bg-dark text-white" id="mobileMenu">
+    <div class="p-4">
+      <ul class="nav flex-column">
+        <!-- Enlaces del menú móvil -->
+        <li class="nav-item"><a class="nav-link text-white" href="#hero" onclick="document.querySelector('#mobileMenu').classList.remove('show')">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#about" onclick="document.querySelector('#mobileMenu').classList.remove('show')">Sobre Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#features" onclick="document.querySelector('#mobileMenu').classList.remove('show')">Características</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#contact" onclick="document.querySelector('#mobileMenu').classList.remove('show')">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Esta sección funciona como la primera impresión de la página y guía al cliente hacia una acción específica de los servicios que se prestan -->
+  <section id="hero" class="text-center text-white bg-primary py-5">
+    <div class="container">
+      <h1 id="watchme" class="display-4">Tu Seguridad, Nuestra Prioridad</h1>
+      <p class="lead mt-3">Protección avanzada para tus datos y dispositivos en cualquier momento y lugar.</p>
+      <a href="#contact" class="btn btn-warning btn-lg mt-4">Protégete Ahora</a>
+    </div>
+  </section>
+
+
+  <!--Carrousel de imagenes con contenido de productos ofrecidos por la empresa inicia automatico e intercambia imagenes despues de 2 segundos-->
+  <section id="carousel">
+    <div class="carousel">
+        <div class="slider">
+            <!-- Imágenes originales -->
+            <div class="slide"><img src="img_2.png" alt="Imagen 1"></div>
+            <div class="slide"><img src="img_3.png" alt="Imagen 2"></div>
+            <div class="slide"><img src="img_4.png" alt="Imagen 3"></div>
+            <div class="slide"><img src="img_5.png" alt="Imagen 4"></div>
+            <div class="slide"><img src="img_6.png" alt="Imagen 5"></div>
+            <div class="slide"><img src="img_7.png" alt="Imagen 6"></div>
+
+            <!-- Clon de las imágenes para un loop continuo -->
+            <div class="slide"><img src="img_2.png" alt="Imagen 1"></div>
+            <div class="slide"><img src="img_3.png" alt="Imagen 2"></div>
+            <div class="slide"><img src="img_4.png" alt="Imagen 3"></div>
+            <div class="slide"><img src="img_5.png" alt="Imagen 4"></div>
+            <div class="slide"><img src="img_6.png" alt="Imagen 5"></div>
+            <div class="slide"><img src="img_7.png" alt="Imagen 6"></div>
+        </div>
+    </div>
+</section>
+    <!-- Botones de control del carrusel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  <!-- Apartado de Sobre Nosotros, donde explico que hace la empresa y el compromiso que tenemos hacia los clientes -->
+  <section id="about" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">¿Quiénes Somos?</h2>
+      <p class="text-muted">En <strong>AntivirusPro</strong>, estamos comprometidos con ofrecer la mejor seguridad cibernética. Nuestro equipo está compuesto por expertos en tecnología y ciberseguridad que trabajan constantemente para protegerte de amenazas digitales.</p>
+      <a href="#contact"><img src="Ciberseguridad.jpg" alt="Seguridad Cibernética" class="img-fluid rounded mt-4" style="max-width: 85%;"></a>
+    </div>
+  </section>
+
+  <!-- Aparatado de Características, donde explica los servicios que ofrezco a los clientes -->
+  <section id="features" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4">Características Principales</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <a href="#contact"><img src="seg_3.jpg" class="card-img-top" alt="Protección en tiempo real"></a>
+            <div class="card-body">
+              <h5 class="card-title">Protección en Tiempo Real</h5>
+              <p class="card-text">Bloqueamos amenazas antes de que te alcancen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <a href="#contact"><img src="seg_1.jpg" class="card-img-top" alt="Actualizaciones Automáticas"></a>
+            <div class="card-body">
+              <h5 class="card-title">Actualizaciones Automáticas</h5>
+              <p class="card-text">Siempre protegido con la última tecnología.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <a href="#contact"><img src="seg_2.jpg" class="card-img-top" alt="Protección Multi-dispositivo"></a>
+            <div class="card-body">
+              <h5 class="card-title">Protección Multi-dispositivo</h5>
+              <p class="card-text">Un servicio integral para todos tus dispositivos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apartado de Formulario de Contacto, donde los futuros clientes ingresaran sus datos para ser contactados -->
+<!-- Formulario de Contacto Modificado -->
+<section id="contact" class="py-5 bg-dark text-white">
+    <div class="container">
+        <h2 class="text-center mb-4">Contáctanos</h2>
+        <!-- Inicio del formulario -->
+          <form id="form" action="submit.php" method="POST" class="mx-auto" style="max-width: 600px;">
+            <!-- Campo para el nombre -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <!-- Campo para el correo -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" name="correo" placeholder="Tu correo" required>
+            </div>
+            <!-- Campo para el mensaje -->
+            <div class="mb-3">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+            </div>
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn btn-warning w-100">Enviar</button>
+        </form>
+    </div>
+</section>
+  <!-- Aquí es la parte final donde esta el Pie de Página -->
+  <footer class="bg-primary text-white text-center py-3">
+    <p>&copy; 2024 AntivirusPro. Todos los derechos reservados.</p>
+    <div>
+      <a href="#" class="text-white mx-2">Facebook</a>
+      <a href="#" class="text-white mx-2">Twitter</a>
+      <a href="#" class="text-white mx-2">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Este es el Bootstrap JS que he utilizado para activar todas las funcionalidades dinamicas -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
