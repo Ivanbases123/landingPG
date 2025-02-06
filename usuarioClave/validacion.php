@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Validación de Cuenta</title>
 </head>
 <body>
+<div class="validation-container">
     <h2>Validación de Cuenta</h2>
         <!-- Mensaje informativo -->
     <p style="color: #555; font-size: 14px; text-align: center;">
@@ -59,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 
     <p>Si no recibiste el código o lo perdiste, <a href="reenviar_codigo.php?email=<?php echo urlencode($_POST['email'] ?? ''); ?>">haz clic aquí para reenviar</a>.</p>
+</div>
 </body>
 </html>
 

@@ -36,6 +36,50 @@ A diferencia con el menú móvil, este menú no es colapsable y está diseñado 
           <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contacto</a></li>
         </ul>
       </nav>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Lanzar modal de fondo estático
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Inicie Sesión</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="login-container">
+                  <div class="logo-container">
+                      <img src="../LOGO_movil.png" alt="Logo de la empresa CodeVauld">
+                  </div>
+                  <h2>Iniciar Sesión</h2>
+                  <form action="./usuarioClave/procesarlogin.php" method="POST">
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Correo Electrónico:</label>
+                          <input type="email" class="form-control" name="email" required>
+                      </div>
+          
+                      <div class="mb-3">
+                          <label for="password" class="form-label">Contraseña:</label>
+                          <input type="password" class="form-control" name="password" required>
+                      </div>
+          
+                      <button type="submit" class="btn btn-primary w-100">Login</button>
+                  </form>
+                  <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+              </div>
+          </div>
+          
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </header>
  <!-- Menú colapsable para dispositivos móviles: El propósito es permitir que los clientes naveguen por las diferentes secciones de la página (Inicio, Sobre Nosotros, Características y Contacto) cuando están en un dispositivo móvil.
