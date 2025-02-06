@@ -1,6 +1,6 @@
 <?php
 include '../conexion.php';
-require 'vendor/autoload.php'; // PHPMailer
+require './vendor/autoload.php'; // PHPMailer
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -24,27 +24,33 @@ function generarCorreo($nombre, $clave) {
 }
 
 function enviarCorreoValidacion($correo, $nombre, $clave) {
-    $email = new PHPMailer();
+    $email = new PHPMailer(true); // Habilitamos excepciones
     try {
         $email->isSMTP();
         $email->Host = 'smtp.gmail.com';
         $email->SMTPAuth = true;
-        $email->Username = 'oivanaut125@gmail.com'; // Reemplaza con tu correo
-        $email->Password = 'obhu tayh mrup jkly'; // Reemplaza con tu contraseña de aplicación
-        $email->SMTPSecure = 'tls';
-        $email->Port = 587;
+        $email->Username = 'oivanaut125@gmail.com'; // Reemplázalo por tu correo
+        $email->Password = 'smjf wyla oyyd iyuw'; // Reemplázalo por tu contraseña de aplicación
+        $email->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Seguridad TLS
+        $email->Port = 587; // Puerto correcto para TLS
 
-        $email->setFrom('noreply@landing.com', 'Soporte');
+        $email->setFrom('oivanaut125@gmail.com', 'Soporte'); // Debe ser tu mismo correo
         $email->addAddress($correo);
         $email->Subject = "Clave de validación de usuario";
         $email->Body = generarCorreo($nombre, $clave);
         $email->isHTML(true);
 
-        return $email->send();
+        if ($email->send()) {
+            return true;
+        } else {
+            throw new Exception("Error desconocido al enviar el correo.");
+        }
     } catch (Exception $e) {
+        echo "Error al enviar el correo: " . $email->ErrorInfo; // 🔴 MOSTRAR ERROR EXACTO
         return false;
     }
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre_usuario'];
@@ -59,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {
         if (enviarCorreoValidacion($correo, $nombre, $clave)) {
             echo "Registro exitoso. Se ha enviado un código de validación a tu correo.";
+            header("Location: validacion.php");
         } else {
             echo "Error al enviar el correo de validación.";
         }

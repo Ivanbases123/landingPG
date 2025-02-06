@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $update = $conn->prepare("UPDATE usuarios SET estado = 1 WHERE email = ?");
         $update->bind_param("s", $correo);
         $update->execute();
-
+        
         // Redirigir al login después de la validación
-        header("Location: login.php");
+        header("Location: login.html");
         exit();
     } else {
         // Mensaje para indicar que el código es incorrecto
@@ -38,6 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h2>Validación de Cuenta</h2>
+        <!-- Mensaje informativo -->
+    <p style="color: #555; font-size: 14px; text-align: center;">
+        Revisa tu bandeja de entrada o carpeta de spam. Este código es necesario para activar tu cuenta.
+        Hemos enviado un código de validación a tu correo electrónico. 
+    </p>    
 
     <?php if (!empty($mensaje)) { ?>
         <p style="color: red;"><?php echo $mensaje; ?></p> <!-- Aquí muestro el mensaje si el código es incorrecto -->
@@ -56,5 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>Si no recibiste el código o lo perdiste, <a href="reenviar_codigo.php?email=<?php echo urlencode($_POST['email'] ?? ''); ?>">haz clic aquí para reenviar</a>.</p>
 </body>
 </html>
+
+
 
 

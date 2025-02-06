@@ -1,6 +1,6 @@
 <?php
 include '../conexion.php';
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -14,8 +14,8 @@ function enviarCorreoValidacion($correo, $clave) {
         $email->isSMTP();
         $email->Host = 'smtp.gmail.com';
         $email->SMTPAuth = true;
-        $email->Username = 'oivanaut125@gmail.com';
-        $email->Password = 'obhu tayh mrup jkly';
+        $email->Username = 'oivanaut125@gmail.com';  // Reemplaza con tu correo
+        $email->Password = 'smjf wyla oyyd iyuw';  // Reemplaza con tu contraseña de aplicación
         $email->SMTPSecure = 'tls';
         $email->Port = 587;
 
@@ -33,20 +33,36 @@ function enviarCorreoValidacion($correo, $clave) {
 
 if (isset($_GET['email'])) {
     $correo = $_GET['email'];
-    $clave_nueva = generarClave();
 
-    // Actualizo el nuevo código en la base de datos
-    $updateClave = $conn->prepare("UPDATE usuarios SET clave_asociada = ? WHERE email = ?");
-    $updateClave->bind_param("is", $clave_nueva, $correo);
-    $updateClave->execute();
+    // Verificar si el correo está registrado en la base de datos
+    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
+    $stmt->bind_param("si", $correo);
+    $stmt->execute();
+    $stmt->store_result();
 
-    // Envío el nuevo código por correo
-    if (enviarCorreoValidacion($correo, $clave_nueva)) {
-        echo "Se ha enviado un nuevo código a tu correo.";
+    if ($stmt->num_rows > 0) {
+        // El correo está registrado, generamos una nueva clave
+        $clave_nueva = generarClave();
+
+        // Actualizamos el nuevo código en la base de datos
+        $updateClave = $conn->prepare("UPDATE usuarios SET clave_asociada = ? WHERE email = ?");
+        $updateClave->bind_param("s", $clave_nueva, $correo);
+        if ($updateClave->execute()) {
+            // Enviar el nuevo código por correo
+            if (enviarCorreoValidacion($correo, $clave_nueva)) {
+                echo "Se ha enviado un nuevo código a tu correo.";
+            } else {
+                echo "Error al enviar el correo.";
+            }
+        } else {
+            echo "Error al actualizar la clave en la base de datos.";
+        }
     } else {
-        echo "Error al enviar el correo.";
+        echo "El correo no está registrado.";
     }
 } else {
     echo "No se especificó un correo.";
 }
 ?>
+
+
