@@ -1,11 +1,11 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['email'];
     $password = $_POST['password']; // En este ejemplo aún no hay contraseña en la BD
 
-    $stmt = $conn->prepare("SELECT estado FROM usuarios WHERE correo = ?");
+    $stmt = $conn->prepare("SELECT estado FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $correo);
     $stmt->execute();
     $stmt->store_result();

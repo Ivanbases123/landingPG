@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de Cuenta</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Validación de Cuenta</h2>
+
+        <!-- Mensaje informativo -->
+        <p style="color: #555; font-size: 14px; text-align: center;">
+            Hemos enviado un código de validación a tu correo electrónico. 
+            Revisa tu bandeja de entrada o carpeta de spam. Este código es necesario para activar tu cuenta.
+        </p>
+
+        <form action="validacion.php" method="POST">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="clave">Código de Validación:</label>
+            <input type="text" id="clave" name="clave" required>
+
+            <button class="login-button" type="submit">Validar Cuenta</button>
+        </form>
+    </div>
+</body>
+</html>
+
